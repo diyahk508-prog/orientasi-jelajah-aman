@@ -39,14 +39,19 @@ return (
 {sedangMemuat && <ActivityIndicator />}
 {pesanError && (
 <View>
-<Text>{pesanError}</Text>
+<Text accessibilityLabel="Pesan error">
+  {pesanError}
+</Text>
 <Button title="Coba Lagi" onPress={() => ambilData(teksTertunda)} />
 </View>
 )}
 {!sedangMemuat && !pesanError && teksTertunda.length > 0 && hasil.length === 0
 && (
-<Text>Kota tidak ditemukan</Text>
+<Text accessibilityLabel="Pesan kosong">
+  Tidak ada kota ditemukan
+</Text>
 )}
+<Text>Ditemukan {hasil.length} kota</Text>
 {hasil.map((kota) => (
 <WeatherCard key={kota.id} kota={kota.name} suhu={29} tingkatAQI="BAIK" />
 ))}
